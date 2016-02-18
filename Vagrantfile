@@ -70,11 +70,13 @@ Vagrant.configure(2) do |config|
    config.vm.provision "shell", inline: <<-SHELL
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
-  sudo chmod 755 devarchi-java-env-install.sh
-  sudo chmod 755 devarchi-hbase-install.sh
-  sudo chown vagrant:vagrant devarchi-java-env-install.sh
-  sudo chown vagrant:vagrant devarchi-hbase-install.sh
-  ./devarchi-java-env-install.sh
-  ./devarchi-hbase-install.sh
+    sudo yum -y update
+    sudo yum install -y tree
+    sudo chmod 755 devarchi-java-env-install.sh
+    sudo chmod 755 devarchi-hbase-install.sh
+    sudo chown vagrant:vagrant devarchi-java-env-install.sh
+    sudo chown vagrant:vagrant devarchi-hbase-install.sh
+    ./devarchi-java-env-install.sh
+    ./devarchi-hbase-install.sh
    SHELL
 end
